@@ -1,0 +1,309 @@
+extends layout
+
+block content
+  .wrapper
+    // Start Header
+    #header
+    // End Header
+    // Page Content
+    #page-property-content
+      .wide_container_3.carousel-full-width
+        .tabs
+          .tab-content
+            #tab1.tab.active
+              // Owl carousel
+              #owl-demo-2.owl-carousel.owl-theme
+                .item
+                  .image(style='background: url(/635x350) center')
+                .item
+                  .image(style='background: url(/635x350) center')
+                .item
+                  .image(style='background: url(/635x350) center')
+                .item
+                  .image(style='background: url(/635x350) center')
+              // End Owl carousel
+            #tab22.tab
+              // Map
+              #map4
+              // end Map
+            #tab3.tab
+          ul.tab-links.col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3
+            li.active.col-xs-4
+              a(href='#tab1')
+                img(src='/assets/img/camera-black.png', alt='')
+                | Photo
+            li.col-xs-4
+              a.map4(href='#tab22')
+                img(src='/assets/img/map.png', alt='')
+                | Map
+            li.col-xs-4
+              a.street-view(href=`/houses/${house._id}/edit`)
+                img.street-view-image(src='/assets/img/street_view.png', alt='')
+                | Street View
+      .wide-2
+        .container
+          ol.breadcrumb
+            li
+              a(href='#') Home
+            li
+              a(href='#') Blog
+            li.active #{house.name}
+        .container
+          .row
+            aside.pr-summary.col-md-4.col-xs-12
+              form(action='agent_profile.html')
+                .col-lg-7.col-md-6.col-sm-3.col-xs-6.hl-bl
+                  h2 $#{house.price}
+                  h5.team-color APARTMENT FOR RENT
+                .col-lg-5.col-md-6.col-sm-3.col-xs-6.hl-bl
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  i.fa.fa-star
+                  br
+                  .row
+                    p.team-color.col-md-6.col-xs-3 Rating:
+                    p.team-color.col-md-6.col-xs-3
+                      strong 5.0
+                      | /5.0
+                .row
+                  .col-md-12.col-sm-6.col-xs-12
+                    .row
+                      .col-lg-5.col-md-6.col-xs-6.cat-img
+                        img(src='/assets/img/bedroom.png', alt='')
+                        p 3 Bedrooms
+                      .col-lg-7.col-md-6.col-xs-6.cat-img.cat-img
+                        img(src='/assets/img/bathroom.png', alt='')
+                        p 1 Bathroom
+                    hr
+                    .row
+                      .col-xs-12
+                        .row
+                          .col-lg-5.col-md-6.col-xs-6.cat-img
+                            img(src='/assets/img/square.png', alt='')
+                            p.info_line
+                              | 86 m
+                              span.rank 2
+                          .col-lg-7.col-md-6.col-xs-6.cat-img
+                            img(src='/assets/img/garage.png', alt='')
+                            p.info_line 1 Garage
+                        .row
+                          .col-xs-12
+                            .col-lg-5.col-md-6.col-xs-6.line
+                            .col-lg-5.col-md-6.col-xs-6.line
+                    hr.full-width
+                .picker-block.col-md-12.col-sm-6.col-xs-12
+                  .row
+                    h3.chek Сheck availability
+                    .col-xs-6.rgt-bord
+                      .form-group
+                        input#date-from(placeholder='From', readonly='')
+                        span.point
+                    .col-xs-6
+                      .form-group
+                        input#date-to(placeholder='To', readonly='')
+                        span.point
+                  .row
+                    .col-xs-12
+                      .circle
+                        img(src='/65x65', alt='')
+                      .team-info
+                        h3 Jason Satti
+                        p.team-color Superhero Agent
+                .row
+                  .col-md-12.col-sm-6.col-xs-12
+                    span.ffs-bs
+                      button.btn.btn-large.btn-primary(type='submit') contact agent
+                    .col-xs-12.fav-block
+                      .bookmark.col-xs-6(data-bookmark-state='empty')
+                        span.title-add Add to Wishlist
+                        p.col-xs-9.fav-text Add to Wishlist
+                      .compare.col-xs-6(data-compare-state='empty')
+                        span.plus-add Add to Cart
+                        p.fav-text Add to Cart
+            .pr-info.col-md-8.col-xs-12
+              h2 St Floor Wingate House
+              .map-marker
+              h5.team-color
+                | London, 93-107 Shaftesbury Ave, W1D 5DY   
+                i.fa.fa-eye
+                | 1092
+              p
+                | Aenean quis sem nisi. Aliquam vehicula gravida orci, nec pretium mi ultricies in. Donec fermentum pulvinar mauris sed gravida. Pellentesque neque justo, commodo sed varius at, sagittis ut neque. In luctus pellentesque hendrerit. Vivamus congue laoreet urna, sed cursus odio scelerisque id. Curabitur volutpat pretium laoreet. Cras pulvinar vulputate porttitor. Ut sed lorem purus. Morbi posuere mauris odio, quis venenatis nisi viverra eu. Phasellus suscipit sem sapien. Phasellus risus purus, accumsan vel molestie vitae, sagittis sed massa. Sed elementum nisl tellus, at pharetra odio pharetra vel.
+            .pr-info.col-md-8.col-xs-12
+              h3 Property Features:
+              section.block
+                ul.submit-features
+                  li.col-md-4.col-xs-4
+                    div Air conditioning
+                  li.col-md-4.col-xs-4.nonexistent
+                    .team-color Hi-Fi
+                  li.col-md-4.col-xs-4
+                    div Balcony
+                  li.col-md-4.col-xs-4
+                    div Balcony
+                  li.col-md-4.col-xs-4
+                    div Internet
+                  li.col-md-4.col-xs-4
+                    div Beach
+                  li.col-md-4.col-xs-4
+                    div Bedding
+                  li.col-md-4.col-xs-4
+                    div Iron
+                  li.col-md-4.col-xs-4
+                    div Bedding
+                  li.col-md-4.col-xs-4.nonexistent
+                    .team-color Coffee pot
+                  li.col-md-4.col-xs-4
+                    div Parquet
+                  li.col-md-4.col-xs-4
+                    div Balcony
+                  li.col-md-4.col-xs-4
+                    div Balcony
+                  li.col-md-4.col-xs-4
+                    div Balcony
+                  li.col-md-4.col-xs-4
+                    div Bedding
+                  li.col-md-4.col-xs-4
+                    div Bedding
+                  li.col-md-4.col-xs-4
+                    div Bedding
+            .pr-info.col-md-8.col-xs-12
+              h3 Floor plans & Additional photo:
+              .row.cust-row
+                .col-xs-3.cust-pad
+                  .pr-img(style='background: url(/175x125) center;')
+                .col-xs-3.cust-pad
+                  .pr-img(style='background: url(/175x125) center;')
+                .col-xs-3.cust-pad
+                  .pr-img(style='background: url(/175x125) center;')
+                .col-xs-3.cust-pad
+                  .pr-img(style='background: url(/175x125) center;')
+                    span.filter
+                    label.img-label(for='op') +32 More
+              .row
+                .col-xs-12
+                  h3 Video Presentation:
+                  p
+                    iframe(src='https://player.vimeo.com/video/34741214')
+                  hr
+                  .row
+                    section.social-block.col-sm-6.col-xs-12
+                      ul.social
+                        li.social-text SHARE:
+                        li
+                          a.facebook(href='https://www.facebook.com', target='blank')
+                            i.fa.fa-facebook
+                        li
+                          a.twitter(href='https://twitter.com', target='blank')
+                            i.fa.fa-twitter
+                        li
+                          a.google(href='https://www.google.com', target='blank')
+                            i.fa.fa-google-plus
+                        li
+                          a.pinterest(href='https://www.pinterest.com', target='blank')
+                            i.fa.fa-pinterest
+                    p.error-block.col-sm-6.col-xs-12.pull-right
+                      a(href='#', data-toggle='modal', data-target='#modal-error')
+                        i.fa.fa-exclamation-triangle
+                        | Report About Error
+      .wide_container_3
+        .container
+          .row
+            .col-md-8.col-xs-12
+              header
+                h4 3 Feedback
+              .hl-bl.col-xs-12
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                i.fa.fa-star
+                p.team-color
+                  span.bold_text 5.0
+                  | /5.0
+              ul.comments
+                li.comment
+                  .comment-wrapper
+                    .name.pull-left Michael Salmon
+                    span.date-block.team-color 4 days ago
+                    p
+                      | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+                li.comment
+                  .comment-wrapper
+                    .name.pull-left Michael Salmon
+                    span.date-block.team-color 4 days ago
+                    p
+                      | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+              .comments-more
+                a(href='#') Show More
+              span.ffs-bs.transparent
+                button#show-reply-form.btn.btn-default.btn-large(type='submit')
+                  i.fa.fa-star-o
+                  span.btn-text leave review
+              section#leave-reply
+                header
+                  h4 Leave Review
+                .clearfix
+                  aside
+                    .rating.rating-user
+                      .inner
+                .row
+                  form#form-single-property-reply(method='post')
+                    .col-sm-6.col-xs-12
+                      input#form-blog-reply-name.form-control(type='text', name='form-blog-reply-name', placeholder='Your Name', required='')
+                    // /.form-group
+                    .col-sm-6.col-xs-12
+                      input#form-blog-reply-email.form-control(type='email', name='form-blog-reply-email', placeholder='Your Email', required='')
+                    // /.form-group
+                    .col-xs-12
+                      textarea#form-blog-reply-message.form-control(rows='5', name='form-blog-reply-message', placeholder='Write Your Text...')
+                    // /.form-group
+                    .col-xs-12.btm-indent
+                      button#form-blog-reply-submit.btn.pull-right.btn-small.btn-primary(type='submit') Send
+                    // /.form-group
+                    #form-rating-status
+                  // /#form-contact
+            .col-md-4.col-xs-12.some-prp
+              h4 Here is some Similar property:
+              p.team-color in London, UK
+              hr
+              .property-block-small
+                a(href='property_page.html')
+                  .property-image-small(style='background: url(/65x55) center;')
+                  h3 37 Great Russell St
+                  p.team-color London, 37 Great Russell St Street Good
+                  h4 $15,000/month
+              hr
+              .property-block-small
+                a(href='property_page.html')
+                  .property-image-small(style='background: url(/65x55) center;')
+                  h3 37 Great Russell St
+                  p.team-color London, 37 Great Russell St Street Good
+                  h4 $15,000/month
+              hr
+              .property-block-small
+                a(href='property_page.html')
+                  .property-image-small(style='background: url(/65x55) center;')
+                  h3 37 Great Russell St
+                  p.team-color London, 37 Great Russell St Street Good
+                  h4 $15,000/month
+    // end Page Content
+    // Start Footer
+    #footer
+    // End Footer
+  #login-modal-open
+  #register-modal-open
+  .custom-galery
+    input#op.gal(type='checkbox')
+    .lower
+    .overlay.overlay-hugeinc
+      label(for='op')
+      nav
+        // Owl carousel
+        .owl-carousel.owl-theme.carousel-full-width.owl-demo-3
+          .item(style='background-image: url(http://placehold.it/950X800);')
+          .item(style='background-image: url(http://placehold.it/800X650);')
+        // End Owl carousel
+  #error-modal-open

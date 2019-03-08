@@ -1,0 +1,33 @@
+mixin houseCardIndex(house = {})
+  .row
+    .col-md-3.col-sm-3.col-xs-6.prop
+      .wht-cont
+        .exp-img-2(style='background:url(/255X200.png) center;background-size: cover;')
+          span.filter
+          span.ffs-bs
+            label.btn.btn-small.btn-primary(for='op') browse photos
+          .overlay
+            .img-counter 23 Photo
+        .item-title
+          h4
+            a(href=`/house/${house.slug}`) #{house.item_name}
+          p.team-color 525 W 28th St, New York, NY 10001
+          .col-md-7.col-sm-7.col-xs-7
+            p Studio - 2 bd
+          .col-md-5.col-sm-5.col-xs-5
+            p
+              | 86 m
+              span.rank 2
+          .col-md-7.col-sm-7.col-xs-7.lft-brd
+          .col-md-5.col-sm-5.col-xs-5.lft-brd
+        hr
+        .item-title.btm-part
+          .row
+            .col-md-8.col-sm-8.col-xs-8
+              p $#{house.price}
+              p.team-color FOR SALE
+            .col-md-4.col-sm-4.col-xs-4.favorite
+              .bookmark(data-bookmark-state='empty')
+                span.title-add Add to Cart
+              .compare(data-compare-state='empty')
+                span.plus-add Add to Cart

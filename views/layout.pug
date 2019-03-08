@@ -1,0 +1,235 @@
+doctype html
+html
+  head
+    title= `${title} | ${h.siteName}`
+    meta(charset='UTF-8')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(href='/assets/fonts/font-awesome.css', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', type='text/css', href='http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css')
+    link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='/assets/css/bootstrap-select.min.css', type='text/css')
+    link(rel='stylesheet', href='/assets/bootstrap/css/bootstrap.css', type='text/css')
+    link(rel='stylesheet', href='/assets/css/owl.carousel.css', type='text/css')
+    link(rel='stylesheet', href='/assets/css/style.css', type='text/css')
+    link(rel='stylesheet', href='/assets/css/selectize.css', type='text/css')
+  body(class=localClassVar, id=localIdVar)
+    //- block header
+    //-   header.top
+    //-     nav.nav
+    //-       .nav__section.nav__section--pages
+    //-         li.nav__item
+    //-           a.nav__link.nav__link--logo(href="/")
+    //-             != h.icon('logo')
+    //-         each item in h.menu
+    //-           li.nav__item
+    //-             a.nav__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'nav__link--active' : ''))
+    //-               != h.icon(item.icon)
+    //-               span #{item.title}
+    //-       .nav__section.nav__section--search
+    //-         .search
+    //-           input.search__input(type="text" placeholder="Coffee, beer..." name="search")
+    //-           .search__results
+    //-       .nav__section.nav__section--user
+    //-         if user
+    //-           li.nav__item: a.nav__link(href="/hearts", class=(currentPath.startsWith('/hearts') ? 'nav__link--active' : ''))
+    //-             != h.icon('heart')
+    //-             span.heart-count #{user.hearts && user.hearts.length}
+    //-           li.nav__item: a.nav__link(href="/logout", class=(currentPath.startsWith('/logout') ? 'nav__link--active' : ''))
+    //-             != h.icon('logout')
+    //-             span Logout
+    //-           li.nav__item: a.nav__link(href="/account", class=(currentPath.startsWith('/account') ? 'nav__link--active' : ''))
+    //-             img.avatar(src=user.gravatar + 'd=retro')
+    //-         else
+    //-           li.nav__item: a.nav__link(href="/register", class=(currentPath.startsWith('/register') ? 'nav__link--active' : '')) Register
+    //-           li.nav__item: a.nav__link(href="/login", class=(currentPath.startsWith('/login') ? 'nav__link--active' : '')) Log In
+
+    block header
+      .navigation
+        header#top.navbar
+          .container
+            .navbar-brand.nav
+              a.navbar-brand.nav.logo(href='/', title='Byarent Logo', rel='home')
+                img(src='/logo.png')
+              a.navbar-brand.nav.logo.retina(href='/', title='Byarent Logo', rel='home')
+                img(src='/logo.png')
+            nav.secondary.main-menu
+              a.pull-right.drop-left(href='#', data-toggle='dropdown')
+                | More
+                .gamb-button
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+              ul.nav.navbar-nav.dropdown-menu.pull-right.slide-left
+                li.has-child
+                  a(href='#') Agents & agencies
+                  ul.child-navigation
+                    li
+                      a(href='agency_profile.html') Agency Profile
+                    li
+                      a(href='agent_profile.html') Agents Profile
+                li.has-child
+                  a(href='#') All Properties
+                  ul.child-navigation
+                    li
+                      a(href='our_property.html') For Rent
+                    li
+                      a(href='our_property_list_type.html') For Sell
+                    li
+                      a(href='add_property.html') Add Property
+                    li
+                      a(href='property_page.html') Property Page
+                li
+                  a(href='about_us.html') About Us
+                li
+                  a(href='/contact') Contact us
+                li(style='color:#000')
+                  a.pull-right.drop-close(href='#', data-toggle='dropdown')
+                    | Close
+                    span.cross
+            // /.navbar collapse
+            nav.primary.start.main-menu
+              ul.nav.navbar-nav.pull-right
+                li
+                  a(href='/add') Add Property
+                li
+                  a(href='/houses') Houses
+                li
+                  a(href='/cart') Cart&nbsp;
+                    i.fa.fa-shopping-cart
+                    if locals.cart
+                      span.badge #{locals.cart.totalQty}
+                    else 
+                      span.badge 0
+                if !user
+                  li
+                    a(href='/login', data-toggle='modal', data-target='#modal-login')
+                      | Log in
+                      i.fa.fa-arrow-right
+                  li
+                    a(href='#', data-toggle='modal', data-target='#modal-register') Registration
+                else
+                  li
+                      a(href='/logout')
+                        | Log Out
+                        i.fa.fa-arrow-right
+
+    block messages
+      // pre= h.dump(locals)
+      if locals.flashes
+        // pre= h.dump(locals.flashes)
+        .inner.inner--flashes
+          .flash-messages
+            - const categories = Object.keys(locals.flashes)
+            each category in categories
+              each message in flashes[category]
+                .flash(class=`flash--${category}`)
+                  p.flash__text!= message
+                  button.flash__remove(onClick="this.parentElement.remove()") &times;
+
+    block preloaderRing
+      #page-preloader
+        .loader-ring
+        .loader-ring2
+
+
+    .content
+      block content
+        p This is the default!
+
+    block loginModal
+      #modal-login.modal(tabindex='-1')
+        .modal-dialog
+          .modal-content
+            .modal-header.text-center
+              button.close(type='button', data-dismiss='modal') ×
+              h2 Sign in to your account:
+              span Welcome to the home!
+            form(action='/login', method='POST')
+              .modal-body
+                .form-group
+                  input(type='email', name='email', placeholder='Email:', required='')
+                  span.fa.fa-at
+                .form-group
+                  input(type='password', name='password', placeholder='Password:', required='')
+                  span.fa.fa-lock
+                .form-group.social-login.clearfix
+                  a.col-md-6.fb-login(href='https://www.facebook.com', target='blank')
+                    span.fa.fa-facebook-square
+                    | Facebook login
+                  a.col-md-6.google-login(href='https://plus.google.com', target='blank')
+                    span.fa.fa-google-plus-square
+                    | Google login
+              .modal-footer
+                .form-group.clearfix
+                  span
+                    | Don't have an account? 
+                    a(href='#', data-toggle='modal', data-target='#modal-register') Sign Up
+                  span
+                    | Forgot your password? 
+                    a(href='#') Restore
+                  button.btn.btn-primary(type='submit') Login
+
+    block registerModal
+      #modal-register.modal(tabindex='-1')
+        .modal-dialog
+          .modal-content
+            .modal-header.text-center
+              button.close(type='button', data-dismiss='modal') ×
+              h2 Create an Account
+              span It takes few minutes
+            form(action='/register', method='POST')
+              .modal-body
+                .user-type-select
+                  div
+                    input#regular-user-radio(type='radio', name='user-type', checked='checked')
+                    label(for='regular-user-radio')
+                      span
+                        span
+                      | Regular User
+                  div
+                    input#agent-radio(type='radio', name='user-type')
+                    label(for='agent-radio')
+                      span
+                        span
+                      | Agent
+                .form-group
+                  input(type='email', name='email', placeholder='Email:', required='')
+                .form-group
+                  input(type='text', name='fName', placeholder='First Name:', required='')
+                .form-group
+                  input(type='text', name='lName', placeholder='Last Name:', required='')
+                .form-group
+                  input(type='password', name='password', placeholder='Password:', required='')
+                .form-group
+                  input(type='password', name='confirmpassword', placeholder='Confirm Password:', required='')
+              .modal-footer
+                .form-group.clearfix
+                  span
+                    | Do u have an account? 
+                    a(href='#', data-toggle='modal', data-target='#modal-login') Sign In
+                  button.btn.btn-primary(type='submit') Join
+                div
+                  span.terms
+                    | By clicking JOIN button you agree with our 
+                    br
+                    a(href='terms_and_conditions.html', target='blank') Terms and conditions
+
+
+    block scripts
+      script(src='https://maps.googleapis.com/maps/api/js?v=3&libraries=places')
+      script(type='text/javascript', src='/assets/js/jquery-2.1.4.min.js')
+      script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js')
+      script(type='text/javascript', src='/assets/js/jquery-migrate-1.2.1.min.js')
+      script(type='text/javascript', src='/assets/bootstrap/js/bootstrap.min.js')
+      script(type='text/javascript', src='/assets/js/markerwithlabel_packed.js')
+      script(type='text/javascript', src='/assets/js/jquery.validate.min.js')
+      script(type='text/javascript', src='/assets/js/jquery.placeholder.js')
+      script(type='text/javascript', src='/assets/js/retina-1.1.0.min.js')
+      script(type='text/javascript', src='/assets/js/owl.carousel.min.js')
+      script(type='text/javascript', src='/assets/js/masonry.pkgd.min.js')
+      script(type='text/javascript', src='/assets/js/jquery.raty.min.js')
+      script(type='text/javascript', src='/assets/js/waypoints.min.js')
+      script(type='text/javascript', src='/assets/js/classie.js')
+      script(type='text/javascript', src='/assets/js/selectize.min.js')
+      script(type='text/javascript', src='/assets/js/custom-map.js')
+      script(type='text/javascript', src='/assets/js/custom.js')

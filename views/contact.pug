@@ -1,0 +1,34 @@
+.wrapper
+  // Start Header
+  #header
+  // End Header
+  // Page Content
+  #page-content
+    #map2.map
+    .container
+      .row
+        .contact-form
+          h2 We're here to help you.
+          h6 Have a question? Write Us
+          form#form-submit.form-submit(action='thank_you_page.html')
+            .col-md-6
+              .input-group
+                label Your Name:
+                input#input-name.form-control(type='text', placeholder='Enter your Name', required='')
+            .col-md-6
+              .input-group
+                label Your Email Address:
+                input#input-email.form-control(type='text', placeholder='Enter your Email', required='')
+            .col-md-12
+              .input-group
+                label Subject:
+                input#input-subject.form-control(type='text', placeholder='Example: Lorem Ipsum', required='')
+            .col-md-12
+              .input-group
+                label Your Message:
+                textarea#text-area-contact.form-control(rows='8', cols='45')
+            .submit
+              span.ffs-bs
+                button.btn.btn-large.btn-primary(type='submit', style='color:#fff;') Send Message
+  // end Page Content
+  // Start Footer

@@ -1,0 +1,109 @@
+extends layout
+
+block content
+  .wrapper
+    // Start Header
+    #header
+    // End Header
+    // Page Content
+    #page-content-search
+      .container
+        .wide_container_2
+          .col-xs-12.content_2
+            .col-lg-10.col-lg-offset-1.col-md-12
+              // Range slider
+              .row
+                .explore.col-xs-12
+                  h2 Properties for sale
+                  h5.team-color.col-sm-offset-3.col-sm-6.col-xs-offset-1.col-xs-10
+                    | Check out properties that match your taste, location and price.
+                form(method='post')
+                  .col-md-2.col-sm-3
+                    .form-inline
+                      label.price-range Price Range:
+                  .col-md-8.col-sm-7
+                    .form-group
+                      .price-range(style='padding-bottom:90px')
+                        input.price-input(type='text', name='price', value='0;5000000')
+                  .select-block.no-border.pull-right.col-sm-2.col-xs-12
+                    select.selection
+                      option Sort By:
+                      option Date
+                      option Price
+                      option Type
+                  // select-block
+                  // row
+                  // End Range slider
+                  .wide-2
+                    .container
+                      each house in houses
+                        .row(style="padding-bottom:20px")
+                          .col-md-3.col-sm-3.prp-img
+                            .exp-img-2(style=`background:url(/uploads/${house.photo}) center;background-size: cover;`)
+                              span.filter
+                              span.ffs-bs
+                                label.btn.btn-small.btn-primary(for='op') browse photos
+                              .overlay
+                                .img-counter 23 Photo
+                          .item-info.col-lg-7.col-md-6.col-sm-6
+                            h4
+                              a(href=`/houses/${house.slug}`) #{house.item_name}
+                            p.team-color 525 W 28th St, New York, NY 10001
+                            .block
+                              .col-md-3.col-sm-3.col-xs-3.cat-img
+                                img(src='/assets/img/bedroom.png', alt='')
+                                p.info-line 3 Bedrooms
+                              .col-md-3.col-sm-3.col-xs-3.cat-img
+                                img(src='/assets/img/bathroom.png', alt='')
+                                p.info-line 1 Bathroom
+                              .col-md-3.col-sm-3.col-xs-3.cat-img
+                                img(src='/assets/img/square.png', alt='')
+                                p.info-line
+                                  | 100 m
+                                  span.rank 2
+                              .col-md-3.col-sm-3.col-xs-3.cat-img
+                                img(src='/assets/img/garage.png', alt='')
+                                p.info-line 1 Garage
+                            .col-md-3.col-sm-3.col-xs-3.line
+                            .col-md-3.col-sm-3.col-xs-3.line
+                            .col-md-3.col-sm-3.col-xs-3.line
+                            .col-md-3.col-sm-3.col-xs-3.line
+                            hr
+                            p
+                              | #{house.description}
+                          .item-price.col-lg-2.col-md-3.col-sm-3.col-xs-12
+                            .sum.col-sm-12.col-xs-6
+                              p $#{house.price}
+                              p.team-color for rent
+                            span.ffs-bs.col-xs-12.btn-half-wth
+                              a.btn.btn-default.btn-small(href=`/houses/${house.slug}`)
+                                | learn more 
+                                i.fa.fa-caret-right
+                            .sum.favorite.col-sm-12.col-xs-6
+                              .bookmark.col-xs-3(data-bookmark-state='empty')
+                                span.title-add Add to Wishlist
+                              p.col-xs-3
+                              form(action="/cart", method="post", name="addToCartForm")
+                                input(type='hidden' name='houseId' value=`${house._id}`)
+                                .compare.col-xs-3(data-compare-state='empty')
+                                  span.plus-add Add to Cart
+                                p.col-xs-3 Cart
+                  // end wide-2
+          .col-xs-12
+            .col-md-10.col-md-offset-1.col-xs-12
+              nav#nav-below.site-navigation.paging-navigation.navbar
+                .nav-previous
+                  a(href='#') PREV PAGE
+                ul.pagination.pagination-lg
+                  li
+                    a(href='#') 1
+                  li
+                    span.active 2
+                  li
+                    a(href='#') 3
+                  li
+                    span.nav-dots ...
+                  li
+                    a(href='#') 5
+                .nav-next
+                  a(href='#') NEXT PAGE

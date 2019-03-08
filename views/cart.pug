@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  .container
+    if houses
+      table#cart.table.table-hover.table-condensed
+        thead
+          tr
+            th(style='width:58%') House
+            th(style='width:10%') Price
+            th.text-center(style='width:22%') Subtotal
+            th(style='width:10%')
+        tbody
+          each house in houses
+            tr
+            td(data-th='House')
+              .row
+                .col-sm-2.hidden-xs
+                  img.img-responsive(src=`/uploads/${house.photo}`, alt='...')
+                .col-sm-10
+                  h4.nomargin #{house.item_name}
+                  p
+                    | #{house.description}
+            td(data-th='Price') #{house.price}
+            td(data-th='Quantity')
+              input.form-control.text-center(type='number', value='1')
+            td.text-center(data-th='Subtotal') 1.99
+            td.actions(data-th='')
+              button.btn.btn-info.btn-sm
+                i.fa.fa-refresh
+              button.btn.btn-danger.btn-sm
+                i.fa.fa-trash-o
+        tfoot
+          tr.visible-xs
+            td.text-center
+              strong Total 1.99
+          tr
+            td
+              a.btn.btn-warning(href='/houses')
+                i.fa.fa-angle-left
+                |  Continue Shopping
+            td.hidden-xs(colspan='2')
+            td.hidden-xs.text-center
+              strong Total $1.99
+            td
+              form(action='/checkout', method='post')
+                button.btn.btn-success.btn-block(type='submit')
+                  | Checkout 
+                  i.fa.fa-angle-right
+    else
+      p.text-center(style="font-size: 40px; margin-top: 40px") Nothing is in your Cart yet.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        a.btn.btn-warning(href='/houses')
+          i.fa.fa-angle-left
+          |  Continue Shopping

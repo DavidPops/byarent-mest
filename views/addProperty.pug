@@ -1,0 +1,285 @@
+extends layout
+
+block content
+  .wrapper
+    // Start Header
+    #header
+    // End Header
+    // Page Content
+    #page-content
+      .wide-4
+        .container
+          ol.breadcrumb
+            li
+              a(href='/') Home
+            li.active Add Property
+        .container
+          .explore
+            h2 Create a new Property
+            h5.team-color It is easy and takes 5 min maximum
+          form#form-submit.form-submit(action='/add', method='POST' enctype='multipart/form-data')
+            .wide-3
+              .explore
+                .property-map-marker
+                  img(src='/assets/img/marker-full.png', alt='')
+                  span.marker-number 1
+                .prt-cont
+                  .property-title
+                    h3 Main Information
+                    h5.team-color Enter your title, price and description
+              .prt-cont
+                hr
+                .form-group
+                  label Property Title:
+                  input.form-control(type='text', name='item_name', placeholder='Enter your title (maximum 250 characters)')
+                .row
+                  .col-md-3.col-sm-3.col-xs-12
+                    .form-group
+                      label Currency
+                      select.selection
+                        option N NGN
+                        option $ USD
+                        option € EUR
+                  .col-md-2.col-sm-2.col-xs-12
+                    .form-group
+                      label Price:
+                      input.form-control(type='text', name='price', placeholder='$')
+                  .col-md-7.col-sm-7.col-xs-12
+                    .form-group
+                      label Price Format
+                      select.selection
+                        option Default Format
+                        option Payment
+                        option Area units
+                  .col-xs-12
+                    .form-group
+                      label(for='text-area-2') Description:
+                      textarea#text-area-2.form-control(name='description', rows='6', cols='45')
+              .explore
+                .property-map-marker
+                  img(src='/assets/img/marker-full.png', alt='')
+                  span.marker-number 2
+                .prt-cont
+                  .property-title
+                    h3 Summary(Optional)
+                    h5.team-color Give more details about your property
+              .prt-cont
+                hr
+                .row
+                  .col-md-8.col-sm-8
+                    .row
+                      .col-md-6.col-sm-6.col-xs-12
+                        .form-group
+                          label Conditions
+                          select.selection
+                            option No Conditions
+                            option Sold
+                            option In Hold
+                      .col-md-6.col-sm-6.col-xs-12
+                        .form-group
+                          label Interval payment for rent
+                          select.selection
+                            option No Payment
+                            option Monthly
+                            option Quarter
+                            option Yearly
+                      .col-md-6.col-sm-6.col-xs-12
+                        .form-group
+                          label Property Type
+                          select.selection
+                            option No Types
+                            option Apartment
+                            option Condominium
+                            option Cottage
+                      .col-md-6.col-sm-6.col-xs-12
+                        .form-group
+                          label Status
+                          select.selection
+                            option No Status
+                            option Rent
+                            option Sale
+                    hr
+                    .row
+                      .col-md-4.col-sm-4.col-xs-12
+                        .form-group
+                          label Rooms
+                          select.selection
+                            option Select ...
+                            option 1
+                            option 2
+                            option 3
+                      .col-md-4.col-sm-4.col-xs-12
+                        .form-group
+                          label Beds
+                          select.selection
+                            option Select ...
+                            option 1
+                            option 2
+                            option 3
+                      .col-md-4.col-sm-4.col-xs-12
+                        .form-group
+                          label Bathrooms
+                          select.selection
+                            option Select ...
+                            option 1
+                            option 2
+                            option 3
+                    hr
+                    .row
+                      .col-md-4.col-sm-4.col-xs-12
+                        .form-group
+                          label Garages
+                          select.selection
+                            option Select ...
+                            option 1
+                            option 2
+                            option 3
+                      .col-md-4.col-sm-4.col-xs-12
+                        .form-group
+                          label Area:
+                          input.form-control(type='text', placeholder='Enter your area', pattern='\d*')
+                      .col-md-4.col-sm-4.col-xs-12
+                        .form-group
+                          label Area Units
+                          select.selection
+                            option m2
+                            option km2
+                            option acre
+                            option sq ft
+                  .col-md-4.col-sm-4.summary-image
+                    label Featured Photo
+                    .featured-image-block
+                      img.property-icon.camera(src='/assets/img/camera.png', alt='')
+                      h3  Add Featured Photo
+                      h5.team-color Beautiful images help you get more interested buyers
+                      input#file-upload.file(type='file', name='photo' multiple='', data-show-upload='false', data-show-caption='false', data-show-remove='false', accept='image/jpeg,image/png,image/gif', data-browse-class='btn btn-default', data-browse-label='Add Files')
+                      label(for='file-upload')
+                        img.image-upload-icon(src='/assets/img/upload.png', alt='')
+                        | Add Files
+              //- .explore
+              //-   .property-map-marker
+              //-     img(src='/assets/img/marker-full.png', alt='')
+              //-     span.marker-number 3
+              //-   .prt-cont
+              //-     .property-title
+              //-       h3 Location Information
+              //-       h5.team-color Lorem Ipsum is simply dummy text of the printing and  typesetting industry. 
+              //- .prt-cont
+              //-   hr
+              //-   .row
+              //-     .location-info.col-md-6.col-sm-6.col-xs-12
+              //-       .form-group
+              //-         label Country
+              //-         select.selection
+              //-           option Nigeria (NGN)
+              //-           option Ghana (GHA)
+              //-           option Kenya (KEN)
+              //-       .form-group.grey-color
+              //-         label.team-color State
+              //-         select.selection
+              //-           option Alabama
+              //-           option Arizona
+              //-           option Arkansas
+              //-       .input-group
+              //-         label Address
+              //-         input.form-control(type='text', placeholder='Enter property address')
+              //-       .row
+              //-         .col-md-6.col-sm-6.col-xs-12
+              //-           .form-group
+              //-             label Town/City:
+              //-             input.form-control(type='text', placeholder='Ex. New York')
+              //-         .col-md-6.col-sm-6.col-xs-12
+              //-           .form-group
+              //-             label Post/ZIP Code:
+              //-             input.form-control(type='text', placeholder='_ _ - _ _ _')
+              //-       .row
+              //-         .col-md-6.col-sm-6.col-xs-12
+              //-           .form-group
+              //-             label District:
+              //-             input.form-control(type='text', placeholder='Ex. Manhattan')
+              //-     .location-map.col-md-6.col-sm-6.col-xs-12
+              //-       .input-group
+              //-         label(for='address-map') Place on map
+              //-         input#address-map.form-control(type='text', name='address')
+              //-         i.fa.fa-search
+              //-       #submit-map
+              //-       .row
+              //-         .col-md-6.col-sm-6.col-xs-12
+              //-           .form-group
+              //-             label(for='latitude') Coordinates
+              //-             input#latitude.form-control(type='text', placeholder='Latitude', readonly='')
+              //-         .col-md-6.col-sm-6.col-xs-12
+              //-           .form-group
+              //-             label(for='longitude')  
+              //-             input#longitude.form-control(type='text', placeholder='Longitude', readonly='')
+              //- .explore
+              //-   .property-map-marker
+              //-     img(src='/assets/img/marker-full.png', alt='')
+              //-     span.marker-number 4
+              //-   .prt-cont
+              //-     .property-title
+              //-       h3 Media Files
+              //-       h5.team-color Lorem Ipsum is simply dummy text of the printing and  typesetting industry. 
+              //- .prt-cont.media
+              //-   hr
+              //-   .row
+              //-     .col-md-4.col-sm-4.col-xs-12
+              //-       .featured-image-block
+              //-         img.property-icon.files(src='/assets/img/files.png', alt='')
+              //-         h3  Add Files
+              //-         h5.team-color Lorem Ipsum is simply dummy text of the printing and
+              //-         input#file-upload-2.file(type='file', multiple='', data-show-upload='false', data-show-caption='false', data-show-remove='false', accept='doc/txt,doc/doc', data-browse-class='btn btn-default', data-browse-label='Add Files')
+              //-         label(for='file-upload-2')
+              //-           img.image-upload-icon(src='/assets/img/upload.png', alt='')
+              //-           | Add Files
+              //-     .col-md-4.col-sm-4.col-xs-12
+              //-       .featured-image-block
+              //-         img.property-icon.gallery(src='/assets/img/gallery.png', alt='')
+              //-         h3  Photo Gallery
+              //-         h5.team-color Lorem Ipsum is simply dummy text of the printing and
+              //-         input#file-upload-3.file(type='file', multiple='', data-show-upload='false', data-show-caption='false', data-show-remove='false', accept='image/jpeg,image/png', data-browse-class='btn btn-default', data-browse-label='Add Files')
+              //-         label(for='file-upload-3')
+              //-           img.image-upload-icon(src='/assets/img/upload.png', alt='')
+              //-           | Add Files
+              //-     .col-md-4.col-sm-4.col-xs-12
+              //-       .featured-image-block
+              //-         img.property-icon.plan(src='/assets/img/plan.png', alt='')
+              //-         h3  Floor Plans
+              //-         h5.team-color Lorem Ipsum is simply dummy text of the printing and
+              //-         input#file-upload-4.file(type='file', multiple='', data-show-upload='false', data-show-caption='false', data-show-remove='false', accept='image/jpeg,image/png', data-browse-class='btn btn-default', data-browse-label='Add Files')
+              //-         label(for='file-upload-4')
+              //-           img.image-upload-icon(src='/assets/img/upload.png', alt='')
+              //-           | Add Files
+              //-   .input-group
+              //-     label Video Presentation:
+              //-     input.form-control(type='text', placeholder='Add link to your video')
+              //-   span.ffs-bs
+              //-     a.btn.btn-small.btn-primary(href='#') Add Video
+              //- .explore
+              //-   .property-map-marker
+              //-     img(src='/assets/img/marker-full.png', alt='')
+              //-     span.marker-number 5
+              //-   .prt-cont
+              //-     .property-title
+              //-       h3 Property Features
+              //-       h5.team-color Lorem Ipsum is simply dummy text of the printing and  typesetting industry. 
+              //- .prt-cont.features
+              //-   hr
+              //-   .row
+              //-     #property-features.block
+              //-       .row
+              //-         - const features = ['Air conditioning', 'Balcony', 'Bedding', 'Coffee Pot', 'Hi-Fi', 'Internet', 'Iron', 'Parquet', 'Beach']
+              //-         ul.submit-features
+              //-           each feature in features
+              //-             li.col-md-4.col-sm-4.col-xs-6
+              //-               .checkbox
+              //-                 label
+              //-                   input(type='checkbox', checked='checked')
+              //-                   | #{feature}
+                    hr
+                  span.ffs-bs
+              input.btn.btn-large.btn-primary(type='submit' value='submit')
+    // end Page Content
+    // Start Footer
+    #footer
+    // End Footer

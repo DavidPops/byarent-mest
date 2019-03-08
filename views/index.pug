@@ -1,0 +1,119 @@
+extends layout
+
+include mixins/_houseCardIndex
+
+block content
+  .wrapper
+    // Start Header
+    #header.menu-wht
+    // End Header
+    // Page Content
+    #page-content_home
+      .home_1
+        .header_title
+          h1 The simplest way to find Property
+          h4 Buy and Rent Property for your convenience
+        form#form-submit.form-submit(action='search_result.html')
+          .search
+            .selector.col-md-3.col-sm-3
+              select#rent-sale.selection
+                option For rent
+                option For sale
+            #email-label.col-md-7.col-sm-7
+              i.fa.fa-location-arrow
+              input#search_field.form-control(type='text', placeholder='Where do you like to live?')
+            span.ffs-bs.col-md-2.col-sm-2
+              button.btn.btn-small.btn-primary(type='submit') Go
+      .container
+        .explore
+          h2 Explore Properties in Your Area
+          h5
+            i.fa.fa-map-marker
+            | Warsaw, Poland 
+            span.team-color Change location
+        .row
+          .col-md-4.col-sm-6
+            a.exp-img(href='search_result.html', style='background:url(/360X240.png) center;background-size: cover;')
+              span.filter
+              .img-info
+                h3 Studio Apartment’s
+                h6 33 Properties
+                span.ffs-bs.btn.btn-small.btn-primary explore more
+      // end container
+      .wide-1
+        .container.rel-img
+          .col-md-8.col-sm-8.ab-us
+            h2 We are Byarent
+            .row
+              .col-md-6.col-sm-6.ex-block
+                h4
+                  i.fa.fa-circle-o
+                  | Wide Range of Properties
+                p From studio apartments, to terraced duplexes and condos, we've got you covered.
+              .col-md-6.col-sm-6.ex-block
+                h4
+                  i.fa.fa-circle-o
+                  | About us
+                p
+                  | We help people seamlessly buy and rent houses for their tastes and convenience
+            .row
+              .col-md-6.col-sm-6.ex-block
+                h4
+                  i.fa.fa-circle-o
+                  | Fully dedicated Agents
+                p We've got agents at your disposal to make house buying easy as 1-2-3
+              .col-md-6.col-sm-6.ex-block
+            span.ffs-bs
+              a.btn.btn-large(href='/houses') explore properties
+        .ab-us-img.col-md-4.col-sm-4
+      // end wide-1
+      .wide-2
+        .container
+          .explore
+            h2 Our New Exclusive Homes
+            h5.team-color
+              | Check out finely picked, diverse range of properties for your convenience.
+              br
+              | You can never go wrong with Byarent 
+          .row    
+            each house in houses
+              .col-md-3.col-sm-3.col-xs-6.prop(style="padding-bottom:20px")
+                .wht-cont
+                  .exp-img-2(style=`background:url(/uploads/${house.photo}) center;background-size: cover;`)
+                    span.filter
+                    span.ffs-bs
+                      label.btn.btn-small.btn-primary(for='op') browse photos
+                    .overlay
+                      .img-counter 23 Photo
+                  .item-title
+                    h4
+                      a(href=`/houses/${house.slug}`) #{house.item_name}
+                    p.team-color 525 W 28th St, New York, NY 10001
+                    .col-md-7.col-sm-7.col-xs-7
+                      p Studio - 2 bd
+                    .col-md-5.col-sm-5.col-xs-5
+                      p
+                        | 86 m
+                        span.rank 2
+                    .col-md-7.col-sm-7.col-xs-7.lft-brd
+                    .col-md-5.col-sm-5.col-xs-5.lft-brd
+                  hr
+                  .item-title.btm-part
+                    .row
+                      .col-md-8.col-sm-8.col-xs-8
+                        p $#{house.price}
+                        p.team-color FOR SALE
+                      .col-md-4.col-sm-4.col-xs-4.favorite
+                        .bookmark(data-bookmark-state='empty')
+                          span.title-add Add to Wishlist
+                        form(action="/cart", method="post", name="addToCartForm")
+                          input(type='hidden' name='houseId' value=`${house._id}`)
+                          .compare(data-compare-state='empty')
+                            span.plus-add Add to Cart
+        span.ffs-bs.bottom
+          a.btn.btn-default.btn-large(href='/houses') explore properties
+      // end wide-2
+      // end Page Content
+      // Start Footer
+      #footer
+      // End Footer

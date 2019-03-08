@@ -1,0 +1,243 @@
+extends layout
+
+block content
+  .wrapper
+    // Start Header
+    #header
+    // End Header
+    // Page Content
+    #page-content
+      .container
+        ol.breadcrumb
+          li
+            a(href='/') Home
+          li.active User profile
+      .container
+        header.header
+          h2 Profile Settings
+          p Setup your Account
+        .row
+          .col-md-3.col-sm-2.col-xs-12.horiz-tab
+            ul#tabs.nav.nav-tabs(data-tabs='tabs')
+              li.li-md
+                a(href='#profile', data-toggle='tab')
+                  i.fa.fa-user
+                  span.img-tab Profile
+              li.li-md
+                a(href='#properties', data-toggle='tab')
+                  i.fa.fa-home
+                  span.img-tab My properties
+              li.li-md
+                a(href='#bookmarked_properties', data-toggle='tab')
+                  i.fa.fa-heart
+                  span.img-tab Bookmarked properties
+              li.li-md
+                a(href='#agencies', data-toggle='tab')
+                  i.fa.fa-building
+                  span.img-tab My agencies
+          .col-md-9.col-sm-10.col-xs-12.horizontal
+            #my-tab-content.tab-content
+              #profile.tab-pane
+                .information-block
+                  form#form-account-profile(action='/account', method='post')
+                    section#personal.clearfix
+                      header.header
+                        h3 Personal Information
+                        p Lorem Ipsum is simply dummy text of the
+                      hr
+                      .form-inline
+                        .row
+                          label.col-md-2.col-sm-3 First Name:
+                          .col-md-10.col-sm-9
+                            input.form-control(type='text', name='fName' placeholder='Enter your First Name', value=user.name.split(' ')[0] || null)
+                      .form-inline
+                        .row
+                          label.col-md-2.col-sm-3 Last Name:
+                          .col-md-10.col-sm-9
+                            input.form-control(type='text', name='lName' placeholder='Enter your Last Name', value=user.name.split(' ')[1] || null)
+                      .form-inline
+                        .row
+                          label.col-md-2.col-sm-3 Profile Photo
+                          .col-md-10.col-sm-9
+                            .image-border
+                              .agent-image
+                            .featured-image-block
+                              input#file-upload-4.file(type='file', data-show-upload='false', data-show-caption='false', data-show-remove='false', accept='image/jpeg,image/png', data-browse-class='btn btn-default', data-browse-label='Add Files')
+                              label.photo-ctrl(for='file-upload-4')
+                                span.upld-photo Upload New Photo
+                      .form-inline
+                        .row
+                          label.col-md-2.col-sm-3 Phone:
+                          .col-md-10.col-sm-9
+                            input.form-control(type='text', placeholder='+__ ___ ___ __ __')
+                      .form-inline
+                        .row
+                          label.col-md-2.col-sm-3 Mobile Phone:
+                          .col-md-10.col-sm-9
+                            input.form-control(type='text', placeholder='8 digits number')
+                      .form-inline
+                        .row
+                          label.col-md-2.col-sm-3 Email Address:
+                          .col-md-10.col-sm-9
+                            input.form-control(type='text', name='email' placeholder='Enter your Email Address', value=user.email)
+                      .form-inline
+                        .row
+                          label.col-md-2.col-sm-3 Skype:
+                          .col-md-10.col-sm-9
+                            input.form-control(type='text', placeholder='Skype nickname')
+                      .form-inline
+                        .row
+                          label.col-md-2.col-sm-3(for='text-area-3') About Me:
+                          .col-md-10.col-sm-9
+                            textarea#text-area-3.form-control(rows='8', cols='45', placeholder='Write your Bio here')
+                    section#social.clearfix
+                      header.header
+                        h3 My Social Network
+                        p Lorem Ipsum is simply dummy text of the
+                      hr
+                      .input-group.facebook-field
+                        i.fa.fa-facebook
+                        input.form-control.input-gp(type='text', placeholder='Enter Link to your Profile')
+                      .input-group.twitter-field
+                        i.fa.fa-twitter
+                        input.form-control.input-gp(type='text', placeholder='Enter Link to your Profile')
+                      .input-group.gplus-field
+                        i.fa.fa-google-plus
+                        input.form-control.input-gp(type='text', placeholder='Enter Link to your Profile')
+                      .input-group.in-field
+                        i.fa.fa-linkedin
+                        input.form-control.input-gp(type='text', placeholder='Enter Link to your Profile')
+                      .form-group.clearfix
+                        button#account-submit.btn.pull-right.btn-large.btn-primary(type='submit') Save Changes
+                  section#change-password
+                    header.header
+                      h3 Change Your Password
+                      p Lorem Ipsum is simply dummy text of the
+                    hr
+                    .row
+                      .col-md-6.col-sm-6
+                        form#form-account-password(method='post')
+                          .form-group
+                            label(for='form-account-password-current') Current Password
+                            input#form-account-password-current.form-control(type='password', name='form-account-password-current')
+                          // /.form-group
+                          .form-group
+                            label(for='form-account-password-new') New Password
+                            input#form-account-password-new.form-control(type='password', name='form-account-password-new')
+                          // /.form-group
+                          .form-group
+                            label(for='form-account-password-confirm-new') Confirm New Password
+                            input#form-account-password-confirm-new.form-control(type='password', name='form-account-password-confirm-new')
+                          // /.form-group
+                          .form-group.clearfix
+                            button#form-account-password-submit.btn.pull-left.btn-small.btn-primary(type='submit') Change
+                            button.btn.pull-left.btn-default.btn-small.cancel(type='reset', value='reset') Cancel
+                          // /.form-group
+                          // /#form-account-password
+                      .col-md-6.col-sm-6
+                        .pas-block
+                          strong Hint:
+                          p
+                            | Be careful. After you change the password, the password is automatically applied. 
+                            br
+                            br
+                            | If you don't have a current password you can sign out and reset your password at sign in page.
+              #properties.tab-pane
+                .information-block
+                  .wide-2
+                    .row
+                      each house in houses
+                        .col-sm-4.col-xs-12.prop
+                          .wht-cont
+                            .exp-img-2(style='background:url(/255x200) center;background-size: cover;')
+                              span.filter
+                              span.ffs-bs
+                                label.btn.btn-small.btn-primary(for='op') browse photos
+                              .overlay
+                                .img-counter 23 Photo
+                            .item-title
+                              h4
+                                a(href=`/houses/${house.slug}`) #{house.item_name}
+                              p.team-color 525 W 28th St, New York, NY 10001
+                              .col-md-7.col-sm-7.col-xs-7
+                                p Studio - 2 bd
+                              .col-md-5.col-sm-5.col-xs-5
+                                p
+                                  | 86 m
+                                  span.rank 2
+                              .col-md-7.col-sm-7.col-xs-7.lft-brd
+                              .col-md-5.col-sm-5.col-xs-5.lft-brd
+                            hr
+                            .item-title.btm-part
+                              .row
+                                .col-md-8.col-sm-8.col-xs-8
+                                  p #{house.price}
+                                  p.team-color FOR SALE
+                                .col-md-4.col-sm-4.col-xs-4.favorite
+                                  .bookmark(data-bookmark-state='empty')
+                                    span.title-add Add to Wishlist
+                                  .compare(data-compare-state='empty')
+                                    span.plus-add Add to Cart
+              #bookmarked_properties.tab-pane
+                .information-block
+                  .wide-2
+                    .wht-cont
+                      .exp-img-2(style='background:url(/765x200) center;background-size: cover;')
+                        span.filter
+                        span.ffs-bs
+                          label.btn.btn-small.btn-primary(for='op') browse photos
+                        .overlay
+                          .img-counter 23 Photo
+                      .item-title
+                        h4
+                          a(href='property_page.html') AVA High Line 89 - 916 Apartments
+                        p.team-color 525 W 28th St, New York, NY 10001
+                        .col-md-7.col-sm-7.col-xs-7
+                          p Studio - 2 bd
+                        .col-md-5.col-sm-5.col-xs-5
+                          p
+                            | 86 m
+                            span.rank 2
+                        .col-md-7.col-sm-7.col-xs-7.lft-brd
+                        .col-md-5.col-sm-5.col-xs-5.lft-brd
+                      hr
+                      .item-title.btm-part
+                        .row
+                          .col-md-8.col-sm-8.col-xs-8
+                            p $5,000,000
+                            p.team-color FOR SALE
+                          .col-md-4.col-sm-4.col-xs-4.favorite
+                            .bookmark(data-bookmark-state='empty')
+                              span.title-add Add to Cart
+                            .compare(data-compare-state='empty')
+                              span.plus-add Add to Cart
+              #agencies.tab-pane
+                .content.table-responsive
+                  table.table
+                    thead
+                      tr
+                        th.col-xs-7(colspan='2') Agency
+                        th.col-xs-2 Date Added
+                        th.col-xs-3 Actions
+                    tbody
+                      tr
+                        td.hd-cnt
+                          a(href='agency_profile.html')
+                            img(alt='', src='/200x120', style='width:200px;background-size: cover;')
+                        td
+                          .inner
+                            a(href='agency_profile.html')
+                              h4 Light House Estate
+                            figure
+                        td December 21, 2015
+                        td.actions
+                          a.edit(href='#')
+                            i.fa.fa-pencil
+                            | Edit
+                          a.delete-agency(href='#')
+                            i.delete.fa.fa-trash-o
+                // content
+                // end Page Content
+                // Start Footer
+                #footer
+                // End Footer
