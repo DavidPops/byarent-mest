@@ -85,7 +85,7 @@ block content
                               p.col-xs-3
                               form(action="/cart", method="post", name="addToCartForm")
                                 input(type='hidden' name='houseId' value=`${house._id}`)
-                                .compare.col-xs-3(data-compare-state='empty')
+                                .compare.col-xs-3(data-compare-state='empty', onclick="this.parentNode.submit()")
                                   span.plus-add Add to Cart
                                 p.col-xs-3 Cart
                   // end wide-2

@@ -108,7 +108,7 @@ block content
                           span.title-add Add to Wishlist
                         form(action="/cart", method="post", name="addToCartForm")
                           input(type='hidden' name='houseId' value=`${house._id}`)
-                          .compare(data-compare-state='empty')
+                          .compare(data-compare-state='empty' onclick="this.parentNode.submit()")
                             span.plus-add Add to Cart
         span.ffs-bs.bottom
           a.btn.btn-default.btn-large(href='/houses') explore properties

@@ -362,7 +362,7 @@ $(document).ready(function($) {
             var data = { action: 'add_user_bookmark', property_id : property_id, is_choose : is_choose };
             return false; 
 
-            this.parentNode.submit();
+            // this.parentNode.submit();
         });
     }); 
 
