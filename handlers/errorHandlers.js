@@ -71,6 +71,7 @@ exports.productionErrors = (err, req, res, next) => {
   res.status(err.status || 500);
   res.render('404', {
     message: err.message,
+    status: err.status,
     error: {}
   });
 };
