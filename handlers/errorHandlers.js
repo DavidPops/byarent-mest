@@ -49,6 +49,7 @@ exports.developmentErrors = (err, req, res, next) => {
   const errorDetails = {
     message: err.message,
     status: err.status,
+    title: 'Page not Found',
     stackHighlighted: err.stack.replace(/[a-z_-\d]+.js:\d+:\d+/gi, '<mark>$&</mark>')
   };
   res.status(err.status || 500);
@@ -72,6 +73,7 @@ exports.productionErrors = (err, req, res, next) => {
   res.render('404', {
     message: err.message,
     status: err.status,
+    title: 'Page not Found',
     error: {}
   });
 };
