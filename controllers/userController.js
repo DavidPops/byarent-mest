@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const House = mongoose.model('House');
 const Order = mongoose.model('Order');
+const Cart = require('../models/Cart');
 const promisify = require('es6-promisify');
 
 // exports.loginForm = (req, res) => {
@@ -44,17 +45,19 @@ exports.register = async (req, res, next) => {
 };
 
 exports.account = async (req, res) => {
-	const housePromise = House.find({author: req.user._id});
+	const housePromise = House.find({author: req.user});
 	const orderPromise = Order.find({user: req.user});
 
-	// const tagsPromise = Store.getTagsList();
-  	// const storesPromise = Store.find({ tags: tagQuery });
   	const [houses, orders] = await Promise.all([housePromise, orderPromise]);
+  	console.log(houses);
+  	console.log(orders);
   	orders.forEach(function(order) {
-      cart = new Cart(order.cart);
+      let cart = new Cart(order.cart);
       order.items = cart.generateArray();
+      // console.log(order.items);
     });
-	// console.log(houses);
+	console.log(houses);
+	console.log(orders);
   	res.render('userProfile', { title: 'Edit Your Account', localClassVar: 'page user-profile', localIdVar: 'page-top', houses, orders });
 };
 
