@@ -224,7 +224,7 @@ block content
                           each item in order.items
                             tr
                               td.hd-cnt
-                                a(href='agency_profile.html')
+                                a(href=`/houses/${item.item.slug}`)
                                   img(alt='', src=`/uploads/${item.item.photo}`, style='width:200px;background-size: cover;')
                               td
                                 .inner
@@ -233,11 +233,9 @@ block content
                                   figure
                               td $#{item.item.price}
                               td.actions
-                                a.edit(href='#')
-                                  i.fa.fa-pencil
-                                  | Edit
-                                a.delete-agency(href='#')
-                                  i.delete.fa.fa-trash-o
+                                a.edit(href='/complainform')
+                                  i.fa.fa-commenting-o
+                                  | Log Complaint
                 // content
                 // end Page Content
                 // Start Footer

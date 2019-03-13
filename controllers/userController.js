@@ -54,7 +54,7 @@ exports.account = async (req, res) => {
   	orders.forEach(function(order) {
       let cart = new Cart(order.cart);
       order.items = cart.generateArray();
-      console.log(order.items);
+      // console.log(order.items);
     });
 	console.log(houses);
 	console.log(orders);
