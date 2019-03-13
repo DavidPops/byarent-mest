@@ -7,15 +7,17 @@ block content
     // End Header
     // Page Content
     #page-content
+      pre.error!= stackHighlighted
       .container-404
         .container
           .row
             .col-md-12.col-sm-12
               .text-404
+                pre st
                 .col-md-offset-2.col-md-5.col-sm-offset-0.col-sm-6
                   h1= status
                 .col-md-4.col-sm-6.no-page
-                  span.sorry Sorry, that page no longer exists!
+                  span.sorry= message
                   p
                     | Head to our 
                     a(href='/houses') listings page 

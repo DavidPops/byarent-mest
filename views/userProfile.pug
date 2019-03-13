@@ -34,7 +34,7 @@ block content
               li.li-md
                 a(href='#agencies', data-toggle='tab')
                   i.fa.fa-building
-                  span.img-tab My agencies
+                  span.img-tab My Orders
           .col-md-9.col-sm-10.col-xs-12.horizontal
             #my-tab-content.tab-content
               #profile.tab-pane
@@ -212,30 +212,32 @@ block content
                             .compare(data-compare-state='empty')
                               span.plus-add Add to Cart
               #agencies.tab-pane
-                .content.table-responsive
-                  table.table
-                    thead
-                      tr
-                        th.col-xs-7(colspan='2') Agency
-                        th.col-xs-2 Date Added
-                        th.col-xs-3 Actions
-                    tbody
-                      tr
-                        td.hd-cnt
-                          a(href='agency_profile.html')
-                            img(alt='', src='/200x120', style='width:200px;background-size: cover;')
-                        td
-                          .inner
-                            a(href='agency_profile.html')
-                              h4 Light House Estate
-                            figure
-                        td December 21, 2015
-                        td.actions
-                          a.edit(href='#')
-                            i.fa.fa-pencil
-                            | Edit
-                          a.delete-agency(href='#')
-                            i.delete.fa.fa-trash-o
+                each order in orders
+                  .content.table-responsive
+                    table.table
+                        thead
+                          tr
+                            th.col-xs-7(colspan='2') Order #{order._id}
+                            th.col-xs-2 Price
+                            th.col-xs-3 Actions
+                        tbody
+                          each item in order.items
+                            tr
+                              td.hd-cnt
+                                a(href='agency_profile.html')
+                                  img(alt='', src=`/uploads/${item.item.photo}`, style='width:200px;background-size: cover;')
+                              td
+                                .inner
+                                  a(href=`/houses/${item.item.slug}`)
+                                    h4 #{item.item.item_name}
+                                  figure
+                              td $#{item.item.price}
+                              td.actions
+                                a.edit(href='#')
+                                  i.fa.fa-pencil
+                                  | Edit
+                                a.delete-agency(href='#')
+                                  i.delete.fa.fa-trash-o
                 // content
                 // end Page Content
                 // Start Footer
